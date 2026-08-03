@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Universe in a Crayon — Official Site</title>
+<meta name="description" content="Official site of Universe in a Crayon. Tour dates, records, streaming and news.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== SVG icon defs ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-spotify" viewBox="0 0 24 24">
+      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+    </symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24">
+      <path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/>
+    </symbol>
+    <symbol id="i-amazon" viewBox="0 0 24 24">
+      <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/>
+    </symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24">
+      <path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== 1. PRELOADER ===== -->
+<div class="preloader" id="preloader">
+  <div class="preloader__word" id="preloaderWord">Universe<span> in a</span> Crayon</div>
+</div>
+
+<!-- ===== 2. HEADER ===== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <div class="header__left">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header__nav" aria-label="Primary">
+        <a href="#shows" class="hlink">Shows</a>
+        <a href="#music" class="hlink">Music</a>
+        <a href="#news" class="hlink">News</a>
+        <a href="#signup" class="hlink">Fans</a>
+        <a href="#records" class="hlink">Store</a>
+      </nav>
+    </div>
+    <a href="#top" class="header__mark">
+      <img src="assets/D-Photoroom.png" alt="Universe in a Crayon" width="500" height="500">
+    </a>
+    <div class="header__right">
+      <div class="streams">
+        <a href="https://open.spotify.com/artist/56JATsVzFxW7Y5yXGQ6IUZ" target="_blank" rel="noopener" aria-label="Spotify"><svg><use href="#i-spotify"/></svg></a>
+        <a href="https://music.apple.com/us/artist/universe-in-a-crayon/1666598484" target="_blank" rel="noopener" aria-label="Apple Music"><svg><use href="#i-apple"/></svg></a>
+        <a href="https://music.amazon.com/artists/B0BSWKFM2Z/universe-in-a-crayon" target="_blank" rel="noopener" aria-label="Amazon Music"><svg><use href="#i-amazon"/></svg></a>
+        <a href="https://music.youtube.com/channel/UCILsilAJtiS33sLvBoZ8GPg" target="_blank" rel="noopener" aria-label="YouTube Music"><svg><use href="#i-youtube"/></svg></a>
+      </div>
+      <a href="#signup" class="btn btn--light" id="subscribeBtn">Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 2b. SUBSCRIBE DRAWER ===== -->
+<!-- Same Formspree endpoint as the #signup section; the href above is the
+     no-JS fallback, so this is pure enhancement. -->
+<div class="drawer" id="subscribeDrawer" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Join our community">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel">
+    <button class="drawer__close" id="drawerClose" aria-label="Close subscribe panel">
+      <span></span><span></span>
+    </button>
+    <h2 class="drawer__title">Join Our Community</h2>
+    <p class="drawer__sub">Tour presales, new releases — sent when there is something cooking.</p>
+
+    <form class="form" novalidate action="https://formspree.io/f/xaqrrook" method="POST">
+      <div class="form__row">
+        <input type="text" name="first" placeholder="First Name" autocomplete="given-name" required>
+        <input type="text" name="last" placeholder="Last Name" autocomplete="family-name" required>
+      </div>
+      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden>
+      <button type="submit" class="btn btn--light form__submit">Sign Up</button>
+      <label class="check">
+        <input type="checkbox" name="consent" required>
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">I agree to receive email updates from Universe in a Crayon and have read the <a href="legal.html#privacy">Privacy Policy</a>.</span>
+      </label>
+      <p class="form__msg" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ===== 3. MENU OVERLAY ===== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__left">
+    <button class="menu__close" id="menuClose" aria-label="Close menu">
+      <span></span><span></span>
+    </button>
+    <nav class="menu__primary" aria-label="Menu">
+      <a href="#shows" class="mitem">Shows</a>
+      <a href="#music" class="mitem">Music</a>
+      <a href="#news" class="mitem">News</a>
+      <a href="#signup" class="mitem">Fans</a>
+      <a href="#records" class="mitem">Store</a>
+    </nav>
+    <nav class="menu__secondary" aria-label="More">
+      <a href="#listen" class="mitem2">Listen</a>
+      <a href="#watch" class="mitem2">Watch</a>
+    </nav>
+    <div class="menu__stream">
+      <span class="menu__streamLabel">Stream on</span>
+      <div class="streams streams--dark">
+        <a href="https://open.spotify.com/artist/56JATsVzFxW7Y5yXGQ6IUZ" target="_blank" rel="noopener" aria-label="Spotify"><svg><use href="#i-spotify"/></svg></a>
+        <a href="https://music.apple.com/us/artist/universe-in-a-crayon/1666598484" target="_blank" rel="noopener" aria-label="Apple Music"><svg><use href="#i-apple"/></svg></a>
+        <a href="https://music.amazon.com/artists/B0BSWKFM2Z/universe-in-a-crayon" target="_blank" rel="noopener" aria-label="Amazon Music"><svg><use href="#i-amazon"/></svg></a>
+        <a href="https://music.youtube.com/channel/UCILsilAJtiS33sLvBoZ8GPg" target="_blank" rel="noopener" aria-label="YouTube Music"><svg><use href="#i-youtube"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu__right">
+    <p class="proheading">Out Now</p>
+    <div class="menu__thumb">
+      <picture>
+        <source srcset="assets/img/ep-perfection.webp" type="image/webp">
+        <img src="assets/img/ep-perfection.png" alt="Perfection is a Myth EP artwork">
+      </picture>
+    </div>
+    <span class="pill">New EP</span>
+    <h3 class="menu__showTitle">Perfection is a Myth</h3>
+    <p class="menu__showMeta">Five tracks. Out now on every platform.</p>
+    <a href="https://open.spotify.com/album/5ppCz3LstVzpGaXoZ22jlN" target="_blank" rel="noopener noreferrer" class="btn btn--fill">Listen on Spotify</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ===== 4. HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero__media" id="heroMedia">
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg">
+      <source src="assets/hero-720.webm" type="video/webm">
+      <source src="assets/hero-720.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero__scrim"></div>
+
+  <button class="volume" id="volumeBtn" aria-label="Unmute video" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="volume__spk" d="M4 9.5h3.6L12 5.5v13L7.6 14.5H4v-5Z"/>
+      <g class="volume__on">
+        <path d="M15.5 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M18 6.8a7.5 7.5 0 0 1 0 10.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </g>
+      <path class="volume__off" d="M15.5 9.5 20.5 14.5M20.5 9.5 15.5 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <h1 class="hero__title" id="heroTitle">Universe<span> in a</span> Crayon</h1>
+
+  <div class="promo" id="promo">
+    <picture class="promo__art">
+      <source srcset="assets/img/ep-perfection.webp" type="image/webp">
+      <img src="assets/img/ep-perfection.png" alt="Perfection is a Myth EP artwork" width="300" height="301">
+    </picture>
+    <div class="promo__body">
+      <p class="promo__eyebrow">New EP Out Now</p>
+      <h2 class="promo__title">Perfection<br>is a Myth</h2>
+      <div class="promo__links">
+        <a href="https://open.spotify.com/album/5ppCz3LstVzpGaXoZ22jlN" target="_blank" rel="noopener noreferrer">Listen</a>
+        <a href="#music">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. UPCOMING SHOWS ===== -->
+<section class="section section--light" id="shows">
+  <div class="container">
+    <h2 class="h-section center reveal">Upcoming Shows</h2>
+
+    <div class="shows">
+      <div class="show reveal-row">
+        <span class="show__date">Sun 09 Aug</span>
+        <span class="show__venue">The Abomination Chapter 12</span>
+        <span class="show__city">Topcat CCU, Kolkata</span>
+        <a href="https://www.skillboxes.com/events/the-abomination-chapter-12-sbpubqpl" target="_blank" rel="noopener noreferrer" class="btn btn--dark show__cta">Buy Tickets</a>
+      </div>
+    </div>
+
+    <div class="center reveal"><a href="#" class="btn btn--dark-outline">All Live Shows</a></div>
+  </div>
+</section>
+
+<!-- ===== 6. OUR MUSIC ===== -->
+<section class="section section--dark music" id="music">
+  <div class="container">
+    <h2 class="h-music center reveal">Our Music</h2>
+    <div class="fan" id="fan">
+      <button class="fan__card" style="--i:-1" data-title="Perfection Is a Myth" data-track="4dsU7CXaoMzzugHOByrdyT" data-album="5ppCz3LstVzpGaXoZ22jlN">
+        <img src="assets/img/album-perfection.jpg" alt="Perfection Is a Myth cover">
+      </button>
+      <button class="fan__card fan__card--mid" style="--i:1" data-title="Somewhere in Between" data-track="0iB53qaMb5qM28ER357FQn" data-album="0T0pXiYkzUpQq63F0ZkQ1w">
+        <img src="assets/img/album-somewhere.jpg" alt="Somewhere in Between EP cover">
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- vinyl player overlay -->
+<div class="vinyl" id="vinyl-overlay" role="dialog" aria-modal="true" aria-label="Album" hidden>
+  <button class="vinyl__close" id="vinyl-close" aria-label="Close">&times;</button>
+  <div class="vinyl__album">
+    <div class="vinyl__disc"><span class="vinyl__print"></span></div>
+    <div class="vinyl__cover"></div>
+  </div>
+  <p class="vinyl__title" id="vinyl-title"></p>
+  <a class="vinyl__spotify" id="vinyl-spotify" href="#" target="_blank" rel="noopener" aria-label="Open album on Spotify">
+    <svg><use href="#i-spotify"/></svg>
+  </a>
+  <!-- Spotify's iframe is the only way to play a track without a Premium OAuth login.
+       Clipped out of sight so the vinyl above is the whole interface. The inner div
+       is what the API swaps for its iframe, so the clipping has to live on the wrapper. -->
+  <div class="vinyl__player"><div id="vinyl-player"></div></div>
+</div>
+
+<!-- ===== 7. LIVE ARCHIVE ===== -->
+<section class="section listen" id="listen">
+  <canvas class="strands" id="strands" aria-hidden="true"></canvas>
+  <div class="container">
+    <h2 class="eyebrow center reveal">Now Streaming</h2>
+    <p class="listen__tag center reveal">Every single, EP and stray B-side we have put out — all of it, in one place.</p>
+
+    <div class="embed reveal">
+      <iframe
+        src="https://open.spotify.com/embed/artist/56JATsVzFxW7Y5yXGQ6IUZ?utm_source=generator&amp;theme=0"
+        title="Universe in a Crayon on Spotify"
+        width="100%" height="420" frameborder="0" loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7b. WATCH ===== -->
+<section class="section watch" id="watch">
+  <div class="container">
+    <h2 class="h-section center reveal"><span class="watch__lead">Watch Us Open for</span>Animals as Leaders, Parrhesia Tour</h2>
+  </div>
+  <div class="video reveal">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/K11Y4dUsiCQ"
+      title="Universe in a Crayon on YouTube"
+      loading="lazy" frameborder="0"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</section>
+
+<!-- ===== 8. LATEST NEWS ===== -->
+<section class="section section--light news" id="news">
+  <div class="container">
+    <h2 class="h-news reveal">Latest News</h2>
+    <div class="news__grid">
+      <article class="ncard reveal">
+        <a class="ncard__link" href="https://www.t2online.in/music/indian/indie-rock--universe-in-a-crayon-s-kolkata-gig-was-pure-vibe---you-had-to-be-there-/2006042" target="_blank" rel="noopener">
+          <div class="ncard__media">
+            <img src="assets/img/news-t2.jpg" alt="Universe in a Crayon live in Kolkata" loading="lazy">
+          </div>
+          <h3 class="ncard__head">Indie Rock: Universe in a Crayon’s Kolkata Gig Was Pure Vibe — You Had To Be There!</h3>
+          <p class="ncard__date">t2online · 29 June 2026</p>
+        </a>
+      </article>
+      <article class="ncard ncard--lift reveal">
+        <a class="ncard__link" href="https://theindianmusicdiaries.com/kolkatas-prog-rock-scene-is-rekindled-with-universe-in-a-crayons-killer-debut-ep-somewhere-in-between/" target="_blank" rel="noopener">
+          <div class="ncard__media">
+            <img src="assets/img/news-imd.jpg" alt="Universe in a Crayon — Somewhere in Between EP" loading="lazy">
+          </div>
+          <h3 class="ncard__head">Kolkata’s Prog-Rock Scene Is Rekindled With Universe In A Crayon’s Killer Debut EP ‘Somewhere in Between’</h3>
+          <p class="ncard__date">The Indian Music Diaries · 9 May 2023</p>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. CRAYON RECORDS ===== -->
+<section class="section section--light records" id="records">
+  <p class="marquee__title center reveal">Artists that inspire us every day.</p>
+  <div class="marquee" id="marquee">
+    <div class="marquee__track">
+      <div class="marquee__set">
+        <figure class="marquee__item"><img src="assets/img/artist-plini.jpg" alt="Plini"><figcaption>Plini</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-david-maxim-micic.jpg" alt="David Maxim Micic"><figcaption>David Maxim Micic</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-animals-as-leaders.jpg" alt="Animals as Leaders"><figcaption>Animals as Leaders</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-earthside.jpg" alt="Earthside"><figcaption>Earthside</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-daniel-tompkins.jpg" alt="Daniel Tompkins"><figcaption>Daniel Tompkins</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-jakub-zytecki.jpg" alt="Jakub Zytecki"><figcaption>Jakub Zytecki</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-sithu-aye.jpg" alt="Sithu Aye"><figcaption>Sithu Aye</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-vitalism.jpg" alt="Vitalism"><figcaption>Vitalism</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-matt-garstka.jpg" alt="Matt Garstka"><figcaption>Matt Garstka</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-jason-richardson.jpg" alt="Jason Richardson"><figcaption>Jason Richardson</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-intervals.jpg" alt="Intervals"><figcaption>Intervals</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-chon.jpg" alt="Chon"><figcaption>Chon</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-yvette-young.jpg" alt="Yvette Young"><figcaption>Yvette Young</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-polyphia.jpg" alt="Polyphia"><figcaption>Polyphia</figcaption></figure>
+      </div>
+      <div class="marquee__set" aria-hidden="true">
+        <figure class="marquee__item"><img src="assets/img/artist-plini.jpg" alt=""><figcaption>Plini</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-david-maxim-micic.jpg" alt=""><figcaption>David Maxim Micic</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-animals-as-leaders.jpg" alt=""><figcaption>Animals as Leaders</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-earthside.jpg" alt=""><figcaption>Earthside</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-daniel-tompkins.jpg" alt=""><figcaption>Daniel Tompkins</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-jakub-zytecki.jpg" alt=""><figcaption>Jakub Zytecki</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-sithu-aye.jpg" alt=""><figcaption>Sithu Aye</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-vitalism.jpg" alt=""><figcaption>Vitalism</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-matt-garstka.jpg" alt=""><figcaption>Matt Garstka</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-jason-richardson.jpg" alt=""><figcaption>Jason Richardson</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-intervals.jpg" alt=""><figcaption>Intervals</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-chon.jpg" alt=""><figcaption>Chon</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-yvette-young.jpg" alt=""><figcaption>Yvette Young</figcaption></figure>
+        <figure class="marquee__item"><img src="assets/img/artist-polyphia.jpg" alt=""><figcaption>Polyphia</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="container center">
+    <p class="records__label reveal">Universe in a Crayon</p>
+    <h2 class="h-records reveal">Merch<br>launching soon</h2>
+    <div class="records__btns reveal">
+      <a href="#" class="btn btn--dark-outline">Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. PREFOOTER SIGNUP ===== -->
+<section class="section section--dark signup" id="signup">
+  <img class="drift drift--1" data-speed="0.10" src="assets/img/scatter-1.svg" alt="">
+  <img class="drift drift--2" data-speed="-0.16" src="assets/img/scatter-2.svg" alt="">
+  <img class="drift drift--3" data-speed="0.22" src="assets/img/scatter-3.svg" alt="">
+  <img class="drift drift--4" data-speed="-0.08" src="assets/img/scatter-4.svg" alt="">
+
+  <div class="container center">
+    <h2 class="h-section reveal">Join Our Community</h2>
+    <p class="signup__sub reveal">Tour presales, new releases — sent when there is something cooking.</p>
+
+    <form class="form reveal" id="signupForm" novalidate
+          action="https://formspree.io/f/xaqrrook" method="POST">
+      <div class="form__row">
+        <input type="text" name="first" placeholder="First Name" autocomplete="given-name" required>
+        <input type="text" name="last" placeholder="Last Name" autocomplete="family-name" required>
+      </div>
+      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+      <!-- Formspree honeypot: bots fill it, humans never see it -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden>
+      <button type="submit" class="btn btn--light form__submit" id="formSubmit">Sign Up</button>
+      <label class="check">
+        <input type="checkbox" name="consent" required>
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">I agree to receive email updates from Universe in a Crayon and have read the <a href="legal.html#privacy">Privacy Policy</a>.</span>
+      </label>
+      <p class="form__msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== 11. FOOTER ===== -->
+<footer class="footer">
+  <nav class="footer__nav" aria-label="Footer">
+    <a href="#top">Home</a><a href="#shows">Shows</a><a href="#music">Music</a>
+    <a href="#news">News</a><a href="#listen">Listen</a><a href="#watch">Watch</a>
+    <a href="#signup">Fans</a><a href="#records">Store</a>
+  </nav>
+  <div class="streams streams--footer">
+    <a href="https://open.spotify.com/artist/56JATsVzFxW7Y5yXGQ6IUZ" target="_blank" rel="noopener" aria-label="Spotify"><svg><use href="#i-spotify"/></svg></a>
+    <a href="https://music.apple.com/us/artist/universe-in-a-crayon/1666598484" target="_blank" rel="noopener" aria-label="Apple Music"><svg><use href="#i-apple"/></svg></a>
+    <a href="https://music.amazon.com/artists/B0BSWKFM2Z/universe-in-a-crayon" target="_blank" rel="noopener" aria-label="Amazon Music"><svg><use href="#i-amazon"/></svg></a>
+    <a href="https://music.youtube.com/channel/UCILsilAJtiS33sLvBoZ8GPg" target="_blank" rel="noopener" aria-label="YouTube Music"><svg><use href="#i-youtube"/></svg></a>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="watermark" aria-hidden="true">Universe in a Crayon</div>
+    <div class="legal">
+      <p>© 2026 Universe in a Crayon. All Rights Reserved.
+        <a href="legal.html#terms">Terms</a><a href="legal.html#privacy">Privacy</a><a href="legal.html#cookies">Cookie Policy</a>
+      </p>
+      <p>Website by <a href="https://www.instagram.com/spacekapow/" target="_blank" rel="noopener">spacekapow</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+</body>
+</html>
