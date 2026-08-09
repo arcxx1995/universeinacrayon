@@ -422,7 +422,7 @@ body.loading{overflow:hidden}
 .watch{background:var(--black);color:var(--white);background-image:linear-gradient(rgba(20,20,20,.91),rgba(20,20,20,.91)),url("assets/blackbg.jpg");background-size:cover;background-position:center}
 .watch .h-section{font-size:clamp(26px,3.4vw,48px);margin-bottom:56px}
 .watch__lead{
-  display:block;font-size:13px;font-weight:500;letter-spacing:.2em;
+  display:block;font-size:20px;font-weight:500;letter-spacing:.2em;
   line-height:1;color:var(--accent);margin-bottom:16px;
 }
 /* Full-bleed: lives outside .container, so no side gutters. Radius and side
