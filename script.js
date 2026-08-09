@@ -94,6 +94,14 @@
   onScroll();
 
   /* ---------------------------------------------------------
+     2b. Latest News — marquee (duplicate track for seamless loop)
+     --------------------------------------------------------- */
+  var newsTrack = $('.news__track');
+  if (newsTrack) {
+    newsTrack.innerHTML += newsTrack.innerHTML;
+  }
+
+  /* ---------------------------------------------------------
      3. Menu overlay
      --------------------------------------------------------- */
   var menu = $('#menu');
@@ -393,6 +401,196 @@
     }
   }
   initStrands();
+
+  /* ---------------------------------------------------------
+     4c. WarpText — pointer-reactive warped/refracted headline.
+     WebGL2 port of the React <WarpText/> effect: text is drawn
+     to an offscreen 2D canvas once (that's the texture), then a
+     fragment shader distorts the UV lookup with a slow ambient
+     warp plus a ripple that follows the pointer, and samples the
+     texture 3x at tiny per-channel offsets for a refraction fringe.
+     --------------------------------------------------------- */
+  var WARP_VERT =
+    '#version 300 es\n' +
+    'in vec2 position;\n' +
+    'out vec2 vUv;\n' +
+    'void main(){ vUv = position * 0.5 + 0.5; gl_Position = vec4(position, 0.0, 1.0); }\n';
+
+  var WARP_FRAG =
+    '#version 300 es\n' +
+    'precision highp float;\n' +
+    'in vec2 vUv;\n' +
+    'out vec4 fragColor;\n' +
+    'uniform sampler2D uText;\n' +
+    'uniform float uTime, uSpeed, uWarpStrength, uWarpScale;\n' +
+    'uniform vec2 uPointer;\n' +
+    'uniform float uPointerInfluence, uPointerStrength, uRefraction;\n' +
+    'uniform float uRipple;\n' +
+    'uniform vec3 uColor;\n' +
+    'void main(){\n' +
+    '  float t = uTime * uSpeed;\n' +
+    '  vec2 uv = vUv;\n' +
+    '  float freq = uWarpScale * 3.0;\n' +
+    '  uv.x += sin(uv.y * freq + t) * uWarpStrength * 0.1;\n' +
+    '  uv.y += sin(uv.x * freq * 1.3 - t * 0.8) * uWarpStrength * 0.06;\n' +
+    '  float dist = distance(vUv, uPointer);\n' +
+    '  float radius = 0.04 + uPointerInfluence * 0.14;\n' +
+    '  float falloff = exp(-(dist * dist) / (2.0 * radius * radius));\n' +
+    '  vec2 dir = normalize(vUv - uPointer + 1e-4);\n' +
+    '  float ripple = uRipple > 0.5 ? sin(dist * 40.0 - t * 6.0) : 1.0;\n' +
+    '  uv += dir * ripple * falloff * uPointerStrength * 0.02;\n' +
+    '  vec2 off = vec2(uRefraction * 0.15, 0.0);\n' +
+    '  float r = texture(uText, uv + off).a;\n' +
+    '  float g = texture(uText, uv).a;\n' +
+    '  float b = texture(uText, uv - off).a;\n' +
+    '  vec3 col = uColor * vec3(r, g, b);\n' +
+    '  fragColor = vec4(col, max(max(r, g), b));\n' +
+    '}\n';
+
+  function initWarpText(wrap) {
+    var cv = $('.warpText__canvas', wrap);
+    var gl = cv.getContext('webgl2', { alpha: true, antialias: true, depth: false });
+    if (!gl) return; // no WebGL2 — the plain-text fallback stays visible
+
+    function compile(type, src) {
+      var sh = gl.createShader(type);
+      gl.shaderSource(sh, src);
+      gl.compileShader(sh);
+      if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+        console.warn('warpText shader:', gl.getShaderInfoLog(sh));
+        return null;
+      }
+      return sh;
+    }
+    var vs = compile(gl.VERTEX_SHADER, WARP_VERT);
+    var fs = compile(gl.FRAGMENT_SHADER, WARP_FRAG);
+    if (!vs || !fs) return;
+
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.bindAttribLocation(prog, 0, 'position');
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.warn('warpText link:', gl.getProgramInfoLog(prog));
+      return;
+    }
+    gl.useProgram(prog);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+    var u = function (name) { return gl.getUniformLocation(prog, name); };
+
+    var P = {
+      color: hexRGB('#f8f5ff'), warpStrength: 0.08, warpScale: 1.7, speed: 0.55,
+      pointerInfluence: 0.42, pointerStrength: 0.38, refraction: 0.018, ripple: true,
+      fontSize: parseInt(wrap.dataset.fontSize, 10) || 170,
+      fontWeight: 800, letterSpacing: -0.06, text: wrap.dataset.text || ''
+    };
+
+    gl.uniform3f(u('uColor'), P.color[0], P.color[1], P.color[2]);
+    gl.uniform1f(u('uWarpStrength'), P.warpStrength);
+    gl.uniform1f(u('uWarpScale'), P.warpScale);
+    gl.uniform1f(u('uSpeed'), P.speed);
+    gl.uniform1f(u('uPointerInfluence'), P.pointerInfluence);
+    gl.uniform1f(u('uPointerStrength'), P.pointerStrength);
+    gl.uniform1f(u('uRefraction'), P.refraction);
+    gl.uniform1f(u('uRipple'), P.ripple ? 1.0 : 0.0);
+    gl.uniform1i(u('uText'), 0);
+
+    var uTime = u('uTime'), uPointer = u('uPointer');
+    gl.uniform2f(uPointer, -1, -1); // off-canvas until the pointer arrives
+
+    var tex = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    // canvas 2D has y=0 at the top; WebGL texture v=0 is the bottom row —
+    // without this every glyph uploads upside-down.
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+    var txt = document.createElement('canvas');
+    var tctx = txt.getContext('2d');
+
+    // draws P.text centred into the texture canvas, tracking negative
+    // letter-spacing by hand since Safari doesn't support ctx.letterSpacing
+    function drawTextTexture(w, h) {
+      txt.width = w; txt.height = h;
+      var fontPx = Math.max(20, Math.min(P.fontSize, w * 0.19));
+      tctx.font = P.fontWeight + ' ' + fontPx + 'px ' + getComputedStyle(wrap).fontFamily;
+      tctx.textBaseline = 'middle';
+      var tracking = P.letterSpacing * fontPx;
+      var chars = P.text.split('');
+      var widths = chars.map(function (c) { return tctx.measureText(c).width; });
+      var total = widths.reduce(function (a, b) { return a + b; }, 0) + tracking * (chars.length - 1);
+      var x = (w - total) / 2;
+      tctx.clearRect(0, 0, w, h);
+      tctx.fillStyle = '#fff';
+      chars.forEach(function (c, i) {
+        tctx.fillText(c, x, h / 2);
+        x += widths[i] + tracking;
+      });
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, txt);
+    }
+
+    var w = 0, h = 0;
+    function resize() {
+      var r = wrap.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var cw = Math.max(1, Math.round(r.width * dpr));
+      var ch = Math.max(1, Math.round(r.height * dpr));
+      if (cw === w && ch === h) return;
+      w = cw; h = ch;
+      cv.width = w; cv.height = h;
+      gl.viewport(0, 0, w, h);
+      drawTextTexture(w, h);
+    }
+
+    var pointer = [-1, -1];
+    function setPointer(clientX, clientY) {
+      var r = wrap.getBoundingClientRect();
+      pointer[0] = (clientX - r.left) / r.width;
+      pointer[1] = 1 - (clientY - r.top) / r.height;
+    }
+    wrap.addEventListener('pointermove', function (e) { setPointer(e.clientX, e.clientY); });
+    wrap.addEventListener('pointerleave', function () { pointer[0] = -1; pointer[1] = -1; });
+
+    gl.clearColor(0, 0, 0, 0);
+    function frame(t) {
+      gl.uniform1f(uTime, t);
+      gl.uniform2f(uPointer, pointer[0], pointer[1]);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    wrap.classList.add('has-warp'); // texture is ready — swap the fallback text for the canvas
+    frame(0);
+    if (reduced) return; // one static frame, no motion
+
+    var start = null, running = true;
+    function loop(now) {
+      if (start === null) start = now;
+      if (running) { resize(); frame((now - start) / 1000); }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { running = e[0].isIntersecting; })
+        .observe(wrap);
+    }
+  }
+  $$('.warpText').forEach(initWarpText);
 
   /* ---------------------------------------------------------
      5. Scroll animation
