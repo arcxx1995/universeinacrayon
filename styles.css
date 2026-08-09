@@ -477,7 +477,7 @@ body.loading{overflow:hidden}
 /* ============================================================
    9. CRAYON RECORDS
    ============================================================ */
-.records{padding-bottom:96px;overflow:hidden;position:relative;background-image:linear-gradient(rgba(20,20,20,.55),rgba(20,20,20,.55)),url("assets/sectionbg.jpg");background-size:cover;background-position:center}
+.records{padding-bottom:96px;overflow:hidden;position:relative;background-image:linear-gradient(rgba(20,20,20,.55),rgba(20,20,20,.55)),url("assets/sectionbg.jpg?v=2");background-size:cover;background-position:center}
 .h-records{
   font-family:"Instrument Serif",var(--serif);font-weight:400;
   text-transform:none;letter-spacing:0;line-height:.95;
